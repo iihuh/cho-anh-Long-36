@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Bridge - Persistent Layout</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="appContainer">
+    <header>
+        <span>Sign Bridge</span>
+        <div class="header-controls">
+            <div class="settings-group">
+                <select class="nav-select" id="languageSelect">
+                    <option value="vi">Tiếng Việt</option>
+                    <option value="en">English</option>
+                    <option value="asl">ASL</option>
+                </select>
+                <select class="nav-select" id="dataTypeSelect">
+                    <option value="subtitle">Subtitles</option>
+                    <option value="gloss">Gloss</option>
+                    <option value="translation">Translation</option>
+                </select>
+            </div>
+
+            <button id="resetBtn" class="btn reset-btn" onclick="resetUI()" style="display: inline-block;">+ New Video</button>
+            <button class="btn exit-btn" onclick="toggleFullscreen()">Exit Fullscreen</button>
+            <span id="status" style="font-size: 14px; margin-left: 10px;">PREVIEW</span>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="video-section">
+            
+            <div id="dropZone" class="upload-container" style="display: none;">
+                <div class="upload-icon-box">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsjlJg8KsyM3M5REgjuzQNcA7mRF8jL7J6VA&s" alt="file-icon" width="120">
+                </div>
+                <div class="upload-actions">
+                    <label class="upload-btn">
+                        CHỌN VIDEO
+                        <input type="file" id="videoInput" accept="video/*">
+                    </label>
+                    <button class="dropdown-btn">▼</button>
+                </div>
+            </div>
+
+            <div id="videoContainer" class="video-wrapper" style="display: flex;">
+                <video id="videoPlayer" controls autoplay muted loop>
+                    <source src="https://publer-media-downloader.kalemi-code4806.workers.dev/?url=https%3A%2F%2Fcdn404.savetube.vip%2Fmedia%2FVRopPf-3Fyk%2Ftap-1-ngon-ngu-ky-hieu-sign-language-1080-ytshorts.savetube.me.mp4" type="video/mp4">
+                </video>
+                <div id="subtitleOverlay">
+                    <div class="subtitle-text" id="activeSubtitle"></div>
+                </div>
+                <button class="btn fs-toggle-btn" id="goFsBtn" onclick="toggleFullscreen()">Go Fullscreen</button>
+            </div>
+        </div>
+
+        <div class="chat-section">
+            <div class="feed-header">Subtitle Feed</div>
+            <div id="chatBox" class="subtitle-history"></div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
